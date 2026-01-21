@@ -1,0 +1,12 @@
+## Interface: 11200
+## Title: DoTimer
+## Author: Elnazzareno (DarckRovert) - El Sequito del Terror
+## Version: 1.2.0
+## Notes: Displays duration timers for DoTs
+## Notes-ruRU: Таймер дот
+## Notes-esES: Muestra temporizadores de duración para DoTs (Soporte completo para cliente español)
+## SavedVariablesPerCharacter: DoTimer_Settings
+DoTimer_SpellLocalization.lua
+DoTimer_Patch.lua
+SpellSystem\SpellSystem.xml
+DoTimer\DoTimer.xml

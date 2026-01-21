@@ -1,0 +1,83 @@
+===========================================
+DoTimer 1.2.0 - Soporte Español
+===========================================
+
+¡SISTEMA COMPLETAMENTE FUNCIONAL!
+
+USO RÁPIDO:
+
+1. Inicia WoW con cliente en español
+2. El addon se cargará automáticamente
+3. Asegúrate de activarlo: /dotimer on
+4. ¡Listo! Usa tus hechizos normalmente
+5. Los timers aparecerán en pantalla
+
+-------------------------------------------
+
+COMANDOS PRINCIPALES:
+
+/dotimer          - Abre el menú
+/dotimer help     - Ayuda
+/dotimer status   - Ver configuración
+/dotimerspells    - Ver traducciones (NUEVO)
+
+-------------------------------------------
+
+VERIFICAR TRADUCCIONES:
+
+Escribe en el chat:
+  /dotimerspells
+
+Verás:
+  VERDE = Hechizo traducido OK
+  ROJO  = Necesita traducción
+
+-------------------------------------------
+
+AGREGAR HECHIZO NUEVO:
+
+1. Abre: DoTimer_SpellLocalization.lua
+2. Busca tu clase (WARLOCK, PRIEST, etc.)
+3. Agrega línea:
+   DoTimer_SpellLocalization["Nombre Español"] = "English Name"
+4. Guarda
+5. En el juego: /reload
+
+Ejemplo:
+  DoTimer_SpellLocalization["Corrupción"] = "Corruption"
+
+-------------------------------------------
+
+PROBLEMAS COMUNES:
+
+Los timers no aparecen:
+  /dotimer on
+  /dotimer ui on
+
+Un hechizo no funciona:
+  /dotimerspells (ver si está en ROJO)
+  Agregar traducción en DoTimer_SpellLocalization.lua
+  /reload
+
+Muchos mensajes en el chat:
+  Abre DoTimer_Patch.lua
+  Línea 30: asegúrate que empiece con --
+
+-------------------------------------------
+
+DOCUMENTACIÓN COMPLETA:
+
+Lee: README_SPANISH.md
+
+-------------------------------------------
+
+Créditos:
+- Addon Original: Vendethiel
+- Modificado por: Elnazzareno (DarckRovert)
+- Guild: El Sequito del Terror
+- Soporte Español: Enero 2026
+
+Twitch: twitch.tv/darckrovert
+Kick: kick.com/darckrovert
+
+===========================================
