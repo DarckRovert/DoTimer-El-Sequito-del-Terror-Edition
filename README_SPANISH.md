@@ -1,158 +1,69 @@
-# DoTimer - Soporte para Cliente Español
+# DoTimer - Soporte para Cliente Español (Arquitectura Pura)
 
 ## ¿Qué es esto?
 
-Este sistema permite que DoTimer funcione correctamente con el cliente de WoW en español. El addon original solo funciona con nombres de hechizos en inglés, pero ahora traduce automáticamente los nombres españoles a inglés internamente.
+Este sistema permite que DoTimer funcione perfectamente con el cliente de WoW en español, utilizando un método 100% no destructivo que no interfiere con el registro de combate nativo del juego.
 
-**¡SISTEMA COMPLETAMENTE FUNCIONAL Y PROBADO!**
+**¡SISTEMA COMPLETAMENTE FUNCIONAL, ESTABLE Y LIGERO!**
 
 - ✅ 100+ hechizos traducidos
-- ✅ Todas las clases soportadas
+- ✅ Traducción nativa mediante Diccionario Directo en el flujo de `DoTimer_ReturnEnglish`
+- ✅ **Cero hooks invasivos**: No intercepta eventos del servidor, previniendo bugs con "Resists" y "Misses".
+- ✅ Crash Free: Inmunidad garantizada a los errores de variables nulas (Ghost Timers/Fake Timers fix).
 - ✅ Detección automática de idioma
-- ✅ Sin configuración necesaria
-- ✅ Sin mensajes de spam
 
 ## Archivos del Sistema
 
 ### 1. DoTimer_SpellLocalization.lua
-Contiene todas las traducciones de hechizos español → inglés para todas las clases:
-- Warlock (Brujo)
-- Priest (Sacerdote)
-- Warrior (Guerrero)
-- Paladin (Paladín)
-- Druid (Druida)
-- Hunter (Cazador)
-- Mage (Mago)
-- Rogue (Pícaro)
-- Shaman (Chamán)
+Contiene todas las traducciones de hechizos español → inglés para todas las clases.
+Si la traducción por texturas de iconos nativa de Vanilla falla (por ejemplo, cuando la mascota muere y desaparece el libro de hechizos de mascota), este diccionario actúa como una red de seguridad infalible de búsqueda rápida O(1).
 
 ### 2. DoTimer_Patch.lua
-Sistema de hooks que intercepta los nombres de hechizos y los traduce automáticamente.
-Incluye:
-- Hook de GetSpellName()
-- Hook de SpellSystem_OnEvent()
-- Sistema de caché para eficiencia
-- Comando /dotimerspells para debug
+Ahora actúa puramente como un sistema de diagnóstico con la función `/dotimerspells`. Todos los ganchos letales (Hooks) de versiones anteriores han sido removidos para proteger el código cliente de TurtleWoW.
 
 ### 3. DoTimer.toc
-Archivo de configuración que carga los archivos en el orden correcto:
-1. DoTimer_SpellLocalization.lua (primero)
-2. DoTimer_Patch.lua (segundo)
+Carga los archivos en orden:
+1. DoTimer_SpellLocalization.lua
+2. DoTimer_Patch.lua
 3. SpellSystem\SpellSystem.xml
 4. DoTimer\DoTimer.xml
 
 ## Cómo Usar
 
-### Uso Normal
-1. Inicia el juego con cliente en español
-2. El addon se cargará automáticamente
-3. Verás el mensaje: "DoTimer Multiidioma cargado. Usa /dotimerspells para ver traducciones."
-4. ¡Listo! Los timers funcionarán correctamente
+1. Inicia el juego con cliente en español.
+2. El addon se cargará automáticamente detectando el idioma o mapeando las texturas nativamente.
+3. ¡Listo! Los timers funcionarán.
 
 ### Verificar Traducciones
 Escribe en el chat del juego:
 ```
 /dotimerspells
 ```
-
-Esto mostrará:
-- Lista de todos tus hechizos
-- **VERDE** = Hechizo traducido correctamente
-- **ROJO** = Hechizo sin traducción (necesita agregarse)
-- Resumen con total de hechizos traducidos y sin traducir
+Muestra qué hechizos han sido detectados en el diccionario de traducción activo.
 
 ## Agregar Nuevas Traducciones
 
-Si encuentras un hechizo que no funciona:
+1. Usa `/dotimerspells` para ver qué te falta.
+2. Abre `DoTimer_SpellLocalization.lua`.
+3. Agrega la línea bajo tu clase:
+```lua
+DoTimer_SpellLocalization["Maldición de Agonía"] = "Curse of Agony"
+```
+4. `/reload`.
 
-1. **Verifica si está traducido:**
-   ```
-   /dotimerspells
-   ```
+## Notas Técnicas y Resolución de Bugs Históricos
 
-2. **Si aparece en ROJO, agrégalo:**
-   - Abre `DoTimer_SpellLocalization.lua`
-   - Busca la sección de tu clase
-   - Agrega la línea:
-   ```lua
-   DoTimer_SpellLocalization["Nombre en Español"] = "English Name"
-   ```
-
-3. **Ejemplo para Warlock:**
-   ```lua
-   DoTimer_SpellLocalization["Maldición de Agonía"] = "Curse of Agony"
-   ```
-
-4. **Recarga el addon:**
-   ```
-   /reload
-   ```
-
-## Solución de Problemas
-
-### El addon no carga
-- Verifica que los archivos estén en: `Interface\AddOns\DoTimer\`
-- Asegúrate de que DoTimer.toc tenga las líneas:
-  ```
-  DoTimer_SpellLocalization.lua
-  DoTimer_Patch.lua
-  ```
-
-### Los timers no aparecen
-1. Verifica que el addon esté activado: `/dotimer on`
-2. Verifica que la UI esté visible: `/dotimer ui on`
-3. Usa `/dotimerspells` para ver si tu hechizo está traducido
-
-### Un hechizo específico no funciona
-1. Lanza el hechizo en el juego
-2. Usa `/dotimerspells` para ver el nombre exacto en español
-3. Agrega la traducción en DoTimer_SpellLocalization.lua
-4. `/reload`
-
-### Mensajes de debug molestos
-Si ves muchos mensajes "[DoTimer] Normalizando...", está activado el modo debug.
-Para desactivarlo:
-1. Abre `DoTimer_Patch.lua`
-2. Busca la línea 30 (aproximadamente)
-3. Asegúrate de que esté comentada con `--`:
-   ```lua
-   -- DEFAULT_CHAT_FRAME:AddMessage("[DoTimer] Normalizando: " .. spellName .. " -> " .. normalizedName)
-   ```
-
-## Comandos Útiles
-
-- `/dotimer` - Abre el menú de configuración
-- `/dotimer help` - Muestra ayuda
-- `/dotimer status` - Muestra estado actual
-- `/dotimerspells` - Lista de traducciones (comando nuevo)
-- `/reload` - Recarga la interfaz
-
-## Notas Técnicas
-
-### Cómo Funciona
-1. Cuando lanzas un hechizo, el juego envía el evento `SPELLCAST_START` con el nombre en español
-2. DoTimer_Patch.lua intercepta este evento
-3. Busca el nombre en DoTimer_SpellLocalization
-4. Si encuentra traducción, reemplaza el nombre por la versión en inglés
-5. DoTimer procesa el hechizo normalmente con el nombre en inglés
-6. El timer se muestra correctamente
-
-### Sistema de Caché
-Para eficiencia, las traducciones se guardan en caché después de la primera vez.
-Esto evita buscar la traducción cada vez que lanzas el mismo hechizo.
+En Enero de 2026, la guild "El Séquito del Terror" arregló 3 bugs catastróficos presentes en distribuciones antiguas del addon:
+1. **Crash LUA por Ghost Timers:** Los temporizadores fantasma ahora heredan la propiedad de idioma correctamente, evitando cuelgues de pantalla (`string.sub(nil)`).
+2. **Registro de Combate roto:** Se eliminó la pésima práctica de forzar el reemplazo de la variable global `arg1` en el evento `SPELLCAST_START`, lo cual arruinaba el reporte de resistidos.
+3. **Maldiciones Overlaping:** Se arreglaron las validaciones en cadena para que las maldiciones ("Curses") se sobrescriban correctamente entre sí validando siempre contra su ID en Inglés absoluto y no el string localizado del usuario.
 
 ## Créditos
-
 - **Addon Original:** DoTimer by Vendethiel
 - **Modificado por:** Elnazzareno (DarckRovert)
 - **Guild:** El Sequito del Terror
-- **Sistema de Localización:** Enero 2026
+- **Motor de Localización Puro:** 2026
 
 ## Contacto
-
 - **Twitch:** [twitch.tv/darckrovert](https://twitch.tv/darckrovert)
 - **Kick:** [kick.com/darckrovert](https://kick.com/darckrovert)
-
----
-
-¡Disfruta de DoTimer en español!

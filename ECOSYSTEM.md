@@ -1,6 +1,6 @@
 # El Ecosistema del Terror - Manual de Inteligencia Colectiva
 
-> **Versión del Documento:** 1.0
+> **Versión del Documento:** 1.0 (Integration de DoTimer 1.2.5)
 > **Arquitecto:** DarckRovert / Elnazzareno
 > **Núcleo:** TerrorSquadAI v5.0
 
@@ -14,41 +14,27 @@ Estos cuatro componentes (TerrorSquadAI, BigWigs, TerrorMeter, DoTimer) han sido
 
 ### 1. El Cerebro: TerrorSquadAI (TSAI)
 Es el comandante central. Toma decisiones, sugiere estrategias, maneja el radar y coordina a los otros addons.
-*   **Rol:** Toma de decisiones y visualización (HUD/Radar).
-*   **Comunicaciones:** Recibe datos de todos y emite órdenes.
 
 ### 2. Los Ojos: BigWigs + TerrorLink
-BigWigs ya no es solo un avisador de jefes. Con el plugin `TerrorLink`, se convierte en los ojos tácticos de la IA.
-*   **Función:** Detecta habilidades del jefe antes de que ocurran.
-*   **Integración:** Envía temporizadores al Cerebro. Si BigWigs dice "Explosión inminente", TSAI ordena "¡Escudos!".
+BigWigs detecta habilidades del jefe antes de que ocurran.
 
 ### 3. El Sistema Nervioso: TerrorMeter (Threat)
 Más allá de medir daño, este addon ahora actúa como un regulador de seguridad.
-*   **Función:** Monitorea la amenaza (aggro) de cada miembro del escuadrón.
-*   **Integración:** Si tu amenaza sube peligrosamente, alerta a TSAI. TSAI entonces te grita en pantalla y, si eres tanque, avisa a los otros tanques.
 
-### 4. El Reloj Biológico: DoTimer
+### 4. El Reloj Biológico: DoTimer (Séquito Premium / Pure Engine)
 Controla los tiempos de los perjuicios (DoTs) en el enemigo.
-*   **Función:** Rastrea maldiciones, sangrados y venenos.
-*   **Integración:** Informa a TSAI de qué debuffs faltan. TSAI coordina con los Brujos/Sacerdotes para reaplicarlos sin superponerse.
+*   **Función:** Rastrea maldiciones, sangrados y venenos visualmente con tipografías `<Shadow>` exclusivas y de alta legibilidad en resolución.
+*   **Garantía de Pureza:** A diferencia del addon original anticuado, esta mutación está libre de Hooks maliciosos, por lo que nunca interferirá en los cálculos de agresión (Threat) del resto del Ecosistema del Terror, asegurando una sinergia perfecta y "Crash Free".
+*   **Integración:** Informa a TSAI de qué debuffs faltan, facilitando las decisiones tácticas.
 
 ---
 
 ## 🔗 Cómo Funciona la "Mente de Enjambre" (SquadMind)
 
 Si estás en una Raid donde varios jugadores usan este Ecosistema:
-
-1.  **Visión Compartida (TerrorNet):**
-    *   Si el Jugador A detecta un enemigo en su radar, el Jugador B lo verá instantáneamente en su propio radar, aunque esté lejos.
-    *   *Uso:* Emboscadas PvP y evitar patrullas en PvE.
-
-2.  **Defensa Coordinada:**
-    *   Si el Tanque Principal usa *Muro de Escudo*, todos los TSAI de la raid lo registran.
-    *   TSAI avisará al Tanque Secundario: *"Muro de Escudo activo en Tanque 1. NO lo uses todavía"*.
-    *   *Resultado:* Cadenas de defensa perfectas sin usar chat de voz.
-
-3.  **Predicción de Amenaza:**
-    *   TerrorMeter envía datos de amenaza de todos a todos. TSAI calcula quién romperá aggro en los próximos 3 segundos y avisa preventivamente.
+1.  **Visión Compartida (TerrorNet):** Compartimiento de emboscadas.
+2.  **Defensa Coordinada:** Rele de CDs defensivos entre Tanques sin hablar.
+3.  **Predicción de Amenaza:** TSAI calcula quién romperá aggro.
 
 ---
 
@@ -66,16 +52,8 @@ Si estás en una Raid donde varios jugadores usan este Ecosistema:
 
 ---
 
-## ⚠️ Solución de Problemas
-
-**P: ¿Por qué no veo a mis compañeros en el Radar?**
-R: Asegúrate de que ellos también tienen TerrorSquadAI instalado y activado (`/tsai net` para verificar).
-
-**P: BigWigs no avisa a la IA.**
-R: Escribe `/terrorlink`. Si dice "OFF", escribe `/terrorlink` de nuevo. Asegúrate de cargar BigWigs al entrar al juego.
-
-**P: TerrorMeter no muestra mis datos.**
-R: Asegúrate de estar en un grupo o banda. La sincronización requiere un canal de grupo.
+## ⚠️ Solución de Problemas Generales
+Asegúrate siempre de tener las herramientas Master actualizadas, que todos los compañeros usen el escuadrón, y evitar sobrecargar tu carpeta de addons externa a la suite principal de la Guild.
 
 ---
 *Hecho para la Hermandad: El Sequito del Terror. Larga vida a Turtle WoW.*

@@ -159,6 +159,12 @@
 												<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent"/>
 											</Anchors>
 											<Color r="1.0" g="1.0" b="1.0"/>
+											<Shadow>
+												<Offset>
+													<AbsDimension x="1" y="-1"/>
+												</Offset>
+												<Color r="0" g="0" b="0" a="1"/>
+											</Shadow>
 										</FontString>
 									</Layer>
 								</Layers>
@@ -198,7 +204,14 @@
 				<Layers>
 					<Layer level="ARTWORK">
 						<!-- displays the time: how much is remaining-->
-						<FontString name="$parentTime" text="0:00" inherits="GameFontNormal" justifyH="CENTER" justifyV="CENTER" hidden="true"/>			
+						<FontString name="$parentTime" text="0:00" inherits="GameFontNormal" justifyH="CENTER" justifyV="CENTER" hidden="true">
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1"/>
+								</Offset>
+								<Color r="0" g="0" b="0" a="1"/>
+							</Shadow>
+						</FontString>
 					</Layer>
 				</Layers>
 			</Frame>
@@ -216,6 +229,12 @@
 							<Anchors>
 								<Anchor point="CENTER"/>
 							</Anchors>
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1"/>
+								</Offset>
+								<Color r="0" g="0" b="0" a="1"/>
+							</Shadow>
 						</FontString>
 					</Layer>
 				</Layers>

@@ -131,39 +131,6 @@ SlashCmdList["DOTIMERSPELLS"] = function(msg)
     end
 end
 
--- Hook para normalizar nombres de hechizos en eventos SPELLCAST_START
--- Esperamos a que SpellSystem_OnEvent exista y lo sobrescribimos
-local DoTimer_PatchFrame = CreateFrame("Frame")
-DoTimer_PatchFrame:RegisterEvent("PLAYER_LOGIN")
-DoTimer_PatchFrame:SetScript("OnEvent", function()
-    if event == "PLAYER_LOGIN" then
-        -- En este punto SpellSystem_OnEvent ya debe existir
-        if SpellSystem_OnEvent then
-            local Original_SpellSystem_OnEvent = SpellSystem_OnEvent
-            
-            SpellSystem_OnEvent = function(evt)
-                -- ANTES de procesar, normalizar arg1 si es SPELLCAST_START
-                if evt == "SPELLCAST_START" and arg1 then
-                    local originalArg1 = arg1
-                    local normalized = DoTimer_NormalizeSpellName(arg1)
-                    
-                    if normalized ~= arg1 then
-                        -- Modificar la variable global arg1
-                        setglobal("arg1", normalized)
-                    end
-                end
-                
-                -- Llamar a la función original con arg1 ya traducido
-                Original_SpellSystem_OnEvent(evt)
-            end
-            
-            -- Hook instalado correctamente
-        else
-            DEFAULT_CHAT_FRAME:AddMessage("|cFFFF0000DoTimer: ERROR - SpellSystem_OnEvent no existe|r")
-        end
-    end
-end)
-
 -- Crear la función DoTimer_ReturnEnglish que DoTimer espera
 function DoTimer_ReturnEnglish(spellname)
     if not spellname then return spellname end
@@ -176,39 +143,7 @@ function DoTimer_ReturnEnglish(spellname)
         end
     end
     
-    return spellname
+    return spellname -- Fallback if not mapped
 end
 
--- Hook DoTimer_ListDebuffs para traducir nombres de debuffs
-local DoTimer_PatchFrame2 = CreateFrame("Frame")
-DoTimer_PatchFrame2:RegisterEvent("PLAYER_LOGIN")
-DoTimer_PatchFrame2:SetScript("OnEvent", function()
-    if event == "PLAYER_LOGIN" then
-        if DoTimer_ListDebuffs then
-            local Original_DoTimer_ListDebuffs = DoTimer_ListDebuffs
-            
-            DoTimer_ListDebuffs = function(unit)
-                -- Llamar a la función original
-                local debuffs = Original_DoTimer_ListDebuffs(unit)
-                
-                -- Traducir todos los nombres de debuffs a inglés
-                local locale = GetLocale()
-                if (locale == "esES" or locale == "esMX") and DoTimer_SpellLocalization then
-                    for i = 1, table.getn(debuffs) do
-                        local originalName = debuffs[i]
-                        local englishName = DoTimer_SpellLocalization[originalName]
-                        if englishName then
-                            debuffs[i] = englishName
-                        end
-                    end
-                end
-                
-                return debuffs
-            end
-            
-            -- Hook de DoTimer_ListDebuffs instalado
-        end
-    end
-end)
-
--- Sistema de localización cargado silenciosamente
+-- Sistema de localización cargado exitosamente

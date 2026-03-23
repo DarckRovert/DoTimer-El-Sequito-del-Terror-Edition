@@ -33,13 +33,13 @@ local COLOR_YELLOW = {r = 1.0, g = 1.0, b = .2} -- halfway progress for bars
 local DEP_SCALE = .9 -- amt. dep. timers are shrunk
 local GHOST_ALPHA = .5 --amt. ghost timers are dimmed
 
--- Colores por tipo de hechizo (El Sequito del Terror)
-local COLOR_DOT = {r = 0.6, g = 0.2, b = 0.8} -- Morado oscuro para DoTs (Corruption, Immolate, etc)
-local COLOR_CURSE = {r = 0.8, g = 0.0, b = 0.4} -- Rosa/Magenta para Maldiciones
-local COLOR_CC = {r = 0.2, g = 0.6, b = 1.0} -- Azul claro para CC (Fear, Seduce, etc)
-local COLOR_PET = {r = 1.0, g = 0.5, b = 0.0} -- Naranja para hechizos de mascota
-local COLOR_DRAIN = {r = 0.0, g = 0.8, b = 0.4} -- Verde esmeralda para Drains
-local COLOR_DEBUFF = {r = 0.9, g = 0.9, b = 0.2} -- Amarillo para otros debuffs
+-- Colores por tipo de hechizo (El Sequito del Terror) - Siniestros
+local COLOR_DOT = {r = 0.8, g = 0.1, b = 0.1} -- Carmesí profundo para DoTs
+local COLOR_CURSE = {r = 0.5, g = 0.0, b = 0.7} -- Púrpura oscuro para Maldiciones
+local COLOR_CC = {r = 0.2, g = 0.3, b = 0.6} -- Azul grisáceo oscuro para CC
+local COLOR_PET = {r = 0.9, g = 0.3, b = 0.0} -- Naranja sangre para hechizos de mascota
+local COLOR_DRAIN = {r = 0.1, g = 0.6, b = 0.3} -- Esmeralda oscuro para Drains
+local COLOR_DEBUFF = {r = 0.7, g = 0.6, b = 0.1} -- Oro oxidado para otros debuffs
 
 -- Tabla de clasificacion de hechizos por tipo
 local SPELL_TYPES = {
@@ -179,6 +179,7 @@ function DoTimer_OnLoad()
 	SLASH_DOTIMER1 = "/dotimer" --creating the slash command
 	SLASH_DOTIMER2 = "/dot" --and the other one, for those who are lazy
 	SlashCmdList["DOTIMER"] = DoTimer_Commands
+	if DoTimerMenuFrame then DoTimerMenuFrame:SetBackdropColor(0, 0, 0, 0.9) end
 	if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage(DOTIMER_LOADED) end  --a little PR never hurts ^^
 end
 
@@ -699,10 +700,10 @@ function DoTimer_CreateSpellTimer(spelltable) --creates a timer onscreen from no
 	--DEFAULT_CHAT_FRAME:AddMessage("table for this target: "..found)
 	--DEFAULT_CHAT_FRAME:AddMessage("number of entries in this table: "..table.getn(casted[found]))
 	local spelltype
-	if string.sub(spelltable.spell,1,5) == "Curse" then spelltype = 1 end
+	if spelltable.english and string.sub(spelltable.english,1,5) == "Curse" then spelltype = 1 end
 	if not (spelltable.timertype == "ghost" or spelltable.timertype == "fake") then
 		for i = table.getn(casted[found]),1,-1 do --testing if any other spells need to be deleted: other curses, or other spells w/ same name (as in, user is refreshing a DoT)
-			if ((casted[found][i].spell == spelltable.spell and not (casted[found].target == "Unknown")) or (string.sub(casted[found][i].spell,1,5) == "Curse" and spelltype)) and DoTimer_TimerIsReal(found,i) then
+			if ((casted[found][i].spell == spelltable.spell and not (casted[found].target == "Unknown")) or ((casted[found][i].english and string.sub(casted[found][i].english,1,5) == "Curse") and spelltype)) and DoTimer_TimerIsReal(found,i) then
 				--DEFAULT_CHAT_FRAME:AddMessage(casted[found][i].spell.." has been removed from "..target)
 				table.remove(casted[found],i)
 				DoTimer_Debug("removing a duplicate timer, or a different curse")
@@ -768,11 +769,11 @@ function DoTimer_PotentialHealTimer()
 		DoTimer_Debug("heal success: "..arg1)
 		if arg1 == "Tiger's Fury" then
 			finishedheal = {
-				spell = arg1, rank = arg2, target = UnitName("player"), targetsex = UnitSex("player"), targetlevel = UnitLevel("player"), texture = arg4, duration = DoTimer_ReturnDuration(arg1,arg2), targettype = "player", timertype = "heal", english = english
+				spell = arg1, rank = arg2, target = UnitName("player"), targetsex = UnitSex("player"), targetlevel = UnitLevel("player"), texture = arg4, duration = DoTimer_ReturnDuration(arg1,arg2), targettype = "player", timertype = "heal", english = DoTimer_ReturnEnglish(arg1)
 			}
 		else
 			finishedheal = {
-				spell = arg1, rank = arg2, target = arg5.name, targetsex = arg5.sex, targetlevel = arg5.level, texture = arg4, duration = DoTimer_ReturnDuration(arg1,arg2), targettype = arg5.type, timertype = "heal", english = english
+				spell = arg1, rank = arg2, target = arg5.name, targetsex = arg5.sex, targetlevel = arg5.level, texture = arg4, duration = DoTimer_ReturnDuration(arg1,arg2), targettype = arg5.type, timertype = "heal", english = DoTimer_ReturnEnglish(arg1)
 			}
 		end
 		DoTimer_CreateSpellTimer(finishedheal)
@@ -1819,14 +1820,14 @@ function DoTimer_SimulateTimer(spell,target) --used to make a fake timer, no rea
 	type = "player"
 	local texture = SpellSystem_ReturnSpellTexture(spell,rank)
 	local duration = DoTimer_ReturnDuration(spell,rank)
-	local spelltable = {spell = spell, rank = rank, texture = texture, duration = duration, target = target, targetsex = sex, targetlevel = level, targettype = type, timertype = "fake"}
+	local spelltable = {spell = spell, rank = rank, texture = texture, duration = duration, target = target, targetsex = sex, targetlevel = level, targettype = type, timertype = "fake", english = DoTimer_ReturnEnglish(spell)}
 	DoTimer_CreateSpellTimer(spelltable)
 end
 
 function DoTimer_CreateGhostTimer(found,i) --makes the ghost timer once a spell is control+clicked
 	local basedspell = casted[found][i]
 	local basedtarget = casted[found]
-	local spelltable = {spell = basedspell.spell, rank = basedspell.rank, texture = basedspell.texture, duration = 0, target = basedtarget.target, targetsex = basedtarget.sex, targetlevel = basedtarget.level, targettype = basedtarget.type, timertype = "ghost"}
+	local spelltable = {spell = basedspell.spell, rank = basedspell.rank, texture = basedspell.texture, duration = 0, target = basedtarget.target, targetsex = basedtarget.sex, targetlevel = basedtarget.level, targettype = basedtarget.type, timertype = "ghost", english = basedspell.english}
 	DoTimer_CreateSpellTimer(spelltable)
 end
 
