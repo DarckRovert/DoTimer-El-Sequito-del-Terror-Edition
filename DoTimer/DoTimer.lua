@@ -4,8 +4,8 @@
 
 DoTimer_Settings = {} --table for user-defined settings
 DoTimer_DebugChannel = nil --for debugging purposes
-local version = "1.1.6" --for the help command
-local date_uploaded = "April 17, 2025" --for the help command
+local version = "1.2.5" --for the help command
+local date_uploaded = "Marzo 22, 2026" --for the help command
 local Old_CSBN,Old_CS,Old_UA,loaded,class,preventingimmol --random variables i use
 local lasttarget = {} --a table holding data for my last target
 local casted = {} --governs the currently casted debuffs.  entries are 1-10 targets, which in turn are 1-20 debuffs and the target name
