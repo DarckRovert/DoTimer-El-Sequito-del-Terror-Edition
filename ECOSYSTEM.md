@@ -5,8 +5,8 @@
 > **Núcleo:** TerrorSquadAI v5.0
 
 ## 🌐 ¿Qué es el Ecosistema?
-No has instalado 4 addons separados. Has instalado una **Red Neural de Combate**.
-Estos cuatro componentes (TerrorSquadAI, BigWigs, TerrorMeter, DoTimer) han sido modificados o enlazados para "hablar" entre sí en tiempo real, creando una inteligencia superior a la suma de sus partes.
+No has instalado 4 addons separados. Has instalado una **Red Neural de Combate** de 10 piezas.
+Estos diez componentes (TerrorSquadAI, WCS_Brain, BigWigs, TerrorMeter, DoTimer, pfUI, HealBot, aux-addon, pfQuest, Atlas-TW) han sido unificados para "hablar" entre sí en tiempo real.
 
 ---
 
@@ -23,9 +23,10 @@ Más allá de medir daño, este addon ahora actúa como un regulador de segurida
 
 ### 4. El Reloj Biológico: DoTimer (Séquito Premium / Pure Engine)
 Controla los tiempos de los perjuicios (DoTs) en el enemigo.
-*   **Función:** Rastrea maldiciones, sangrados y venenos visualmente con tipografías `<Shadow>` exclusivas y de alta legibilidad en resolución.
-*   **Garantía de Pureza:** A diferencia del addon original anticuado, esta mutación está libre de Hooks maliciosos, por lo que nunca interferirá en los cálculos de agresión (Threat) del resto del Ecosistema del Terror, asegurando una sinergia perfecta y "Crash Free".
-*   **Integración:** Informa a TSAI de qué debuffs faltan, facilitando las decisiones tácticas.
+*   **Integración:** Informa a TSAI y WCS_Brain de qué debuffs faltan.
+
+### 5. La Flota Táctica: pfUI, HealBot, aux, pfQuest, Atlas
+Integración total de interfaz, sanación, economía y navegación.
 
 ---
 
