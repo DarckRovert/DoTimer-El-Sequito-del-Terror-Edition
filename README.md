@@ -25,6 +25,5 @@ DoTimer actúa como los "ojos" de `TerrorSquadAI`. Coordina y procesa tiempos en
 ### 🌐 Séquito Ecosystem Compatible
 Como el **Reloj Biológico** del escuadrón, `DoTimer Edition Séquito` rastrea los DoTs/HoTs y permite que la IA de `WCS_Brain` ajuste las rotaciones de combate del clan para una eficiencia perfecta.
 
----
 *Modificado por DarckRovert para El Séquito del Terror.*
-*Versión Estable v1.2.5 (God-Tier Architecture).*
+*Versión v9.3.0 [God-Tier] — Ecosistema El Séquito del Terror.*
