@@ -1,6 +1,6 @@
-﻿## Interface: 11200
+## Interface: 11200
 ## Title: DoTimer
-## Author: Elnazzareno (DarckRovert) - El Sequito del Terror
+## Author: El Séquito del Terror
 ## Version: 9.3.0 [God-Tier]
 ## Notes: Displays duration timers for DoTs
 ## Notes-ruRU: Ð¢Ð°Ð¹Ð¼ÐµÑ€ Ð´Ð¾Ñ‚
