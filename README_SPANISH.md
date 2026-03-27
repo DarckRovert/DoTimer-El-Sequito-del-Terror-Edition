@@ -1,69 +1,30 @@
-# DoTimer - Soporte para Cliente Español (Arquitectura Pura)
+# DoTimer — Manual Completo en Español
 
-## ¿Qué es esto?
+## Introducción
 
-Este sistema permite que DoTimer funcione perfectamente con el cliente de WoW en español, utilizando un método 100% no destructivo que no interfiere con el registro de combate nativo del juego.
+DoTimer es un addon esencial para cualquier Warlock que quiera maximizar su DPS en Turtle WoW. Sin un seguimiento visual de los dots, es fácil dejar que Corruption o Curse of Agony expiren antes de tiempo, lo que significa DPS perdido.
 
-**¡SISTEMA COMPLETAMENTE FUNCIONAL, ESTABLE Y LIGERO!**
+## Dots del Warlock Monitorizados
 
-- ✅ 100+ hechizos traducidos
-- ✅ Traducción nativa mediante Diccionario Directo en el flujo de `DoTimer_ReturnEnglish`
-- ✅ **Cero hooks invasivos**: No intercepta eventos del servidor, previniendo bugs con "Resists" y "Misses".
-- ✅ Crash Free: Inmunidad garantizada a los errores de variables nulas (Ghost Timers/Fake Timers fix).
-- ✅ Detección automática de idioma
+| Hechizo | Duración | Intervalo de Daño |
+|---|---|---|
+| Corruption | 18s | 3s (6 ticks) |
+| Curse of Agony | 24s | 2s (12 ticks) |
+| Immolate | 15s | 3s (5 ticks) |
+| Siphon Life | 30s | 3s (10 ticks) |
+| Curse of Doom | 60s | 1 tick al final |
 
-## Archivos del Sistema
+## Configuración Recomendada para Warlock
 
-### 1. DoTimer_SpellLocalization.lua
-Contiene todas las traducciones de hechizos español → inglés para todas las clases.
-Si la traducción por texturas de iconos nativa de Vanilla falla (por ejemplo, cuando la mascota muere y desaparece el libro de hechizos de mascota), este diccionario actúa como una red de seguridad infalible de búsqueda rápida O(1).
+1. **Umbral de alerta**: 2 segundos antes de que expire el dot.
+2. **Sonido de alerta**: Activado (evita mirar la pantalla constantemente).
+3. **Posición**: Esquina superior derecha, debajo del marco del objetivo.
+4. **Escala**: 0.8 para no ocupar demasiado espacio en pantalla.
 
-### 2. DoTimer_Patch.lua
-Ahora actúa puramente como un sistema de diagnóstico con la función `/dotimerspells`. Todos los ganchos letales (Hooks) de versiones anteriores han sido removidos para proteger el código cliente de TurtleWoW.
+## Multi-Target en Raid
 
-### 3. DoTimer.toc
-Carga los archivos en orden:
-1. DoTimer_SpellLocalization.lua
-2. DoTimer_Patch.lua
-3. SpellSystem\SpellSystem.xml
-4. DoTimer\DoTimer.xml
+En fights con múltiples objetivos, DoTimer agrupa los temporizadores por objetivo. Puedes ver ataques de hasta 8 objetivos simultáneos.
 
-## Cómo Usar
+## Integración con WCS_Brain
 
-1. Inicia el juego con cliente en español.
-2. El addon se cargará automáticamente detectando el idioma o mapeando las texturas nativamente.
-3. ¡Listo! Los timers funcionarán.
-
-### Verificar Traducciones
-Escribe en el chat del juego:
-```
-/dotimerspells
-```
-Muestra qué hechizos han sido detectados en el diccionario de traducción activo.
-
-## Agregar Nuevas Traducciones
-
-1. Usa `/dotimerspells` para ver qué te falta.
-2. Abre `DoTimer_SpellLocalization.lua`.
-3. Agrega la línea bajo tu clase:
-```lua
-DoTimer_SpellLocalization["Maldición de Agonía"] = "Curse of Agony"
-```
-4. `/reload`.
-
-## Notas Técnicas y Resolución de Bugs Históricos
-
-En Enero de 2026, la guild "El Séquito del Terror" arregló 3 bugs catastróficos presentes en distribuciones antiguas del addon:
-1. **Crash LUA por Ghost Timers:** Los temporizadores fantasma ahora heredan la propiedad de idioma correctamente, evitando cuelgues de pantalla (`string.sub(nil)`).
-2. **Registro de Combate roto:** Se eliminó la pésima práctica de forzar el reemplazo de la variable global `arg1` en el evento `SPELLCAST_START`, lo cual arruinaba el reporte de resistidos.
-3. **Maldiciones Overlaping:** Se arreglaron las validaciones en cadena para que las maldiciones ("Curses") se sobrescriban correctamente entre sí validando siempre contra su ID en Inglés absoluto y no el string localizado del usuario.
-
-## Créditos
-- **Addon Original:** DoTimer by Vendethiel
-- **Modificado por:** Elnazzareno (DarckRovert)
-- **Guild:** El Sequito del Terror
-- **Motor de Localización Puro:** 2026
-
-## Contacto
-- **Twitch:** [twitch.tv/darckrovert](https://twitch.tv/darckrovert)
-- **Kick:** [kick.com/darckrovert](https://kick.com/darckrovert)
+Los datos de dot uptime son enviados a WCS_Brain para análisis histórico en la pestaña de Estadísticas.
