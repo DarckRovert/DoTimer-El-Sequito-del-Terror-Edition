@@ -22,8 +22,19 @@ Simplemente lanza tus hechizos. DoTimer creará automáticamente barras de tiemp
 ## 🌐 Integración Terror Ecosystem
 DoTimer actúa como los "ojos" de `TerrorSquadAI`. Coordina y procesa tiempos en la interfaz permitiendo renovaciones de DoTs analíticas.
 
-### 🌐 Séquito Ecosystem Compatible
-Como el **Reloj Biológico** del escuadrón, `DoTimer Edition Séquito` rastrea los DoTs/HoTs y permite que la IA de `WCS_Brain` ajuste las rotaciones de combate del clan para una eficiencia perfecta.
+### 🌐 Séquito Ecosystem Compatible (SquadMind Clock)
+Como el **Reloj Biológico** del escuadrón, `DoTimer Edition Séquito` rastrea los DoTs/HoTs y se comunica con la Red Neural:
+
+```mermaid
+graph TD
+    classDef combat fill:#4B0082,stroke:#9370DB,stroke-width:2px,color:#fff;
+    classDef core fill:#2C0000,stroke:#FF0000,stroke-width:2px,color:#fff;
+    DT["⏱️ DoTimer<br/>(Reloj Biológico)"]:::combat
+    WCS["🔮 WCS_Brain<br/>(Vínculo Maestro)"]:::core
+    
+    DT ==>|Avisa de Debuffs Faltantes| WCS
+```
+Permite que la IA de `WCS_Brain` analice el combate y ajuste automáticamente las rotaciones de Curses y DoTs del clan para una eficiencia de DPS perfecta.
 
 *Modificado por DarckRovert para El Séquito del Terror.*
 *Versión v9.3.0 [God-Tier] — Ecosistema El Séquito del Terror.*
