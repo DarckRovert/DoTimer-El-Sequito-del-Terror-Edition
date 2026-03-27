@@ -38,3 +38,15 @@ Permite que la IA de `WCS_Brain` analice el combate y ajuste automÃ¡ticamente la
 
 *Modificado por DarckRovert para El SÃ©quito del Terror.*
 *VersiÃ³n v9.3.0 [God-Tier] â€” Ecosistema El SÃ©quito del Terror.*
+
+---
+
+## ?? Comunidad y Gobernanza
+
+Este proyecto es parte del ecosistema **El Séquito del Terror**. Nos comprometemos a mantener un ambiente sano y profesional:
+
+- ?? **[Código de Conducta](./CODE_OF_CONDUCT.md)**: Nuestras normas de convivencia.
+- ?? **[Guía de Contribución](./CONTRIBUTING.md)**: Cómo ayudar a expandir este addon.
+- ??? **[Licencia](./LICENSE)**: Este proyecto está bajo la Licencia MIT.
+
+---
