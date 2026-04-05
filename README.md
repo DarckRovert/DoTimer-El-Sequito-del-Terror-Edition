@@ -1,54 +1,43 @@
-# DoTimer [Séquito del Terror Edition] — v9.3.0 [God-Tier] ⏱️⚔️
+# DoTimer — El Séquito del Terror Edition ⏳🔥
 
-> **Control avanzado de dots, debuffs y cooldowns para Turtle WoW.** Imprescindible para el Warlock de élite del Séquito del Terror.
+> **Advanced dot/debuff tracker for Turtle WoW.** Una versión ultra-optimizada con perfiles específicos de Warlock para **El Séquito del Terror**.
 
-[![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-blue.svg)](./LICENSE)
-[![Versión](https://img.shields.io/badge/version-9.3.0--God--Tier-red)](./CHANGELOG.md)
-
----
-
-## ⏱️ ¿Qué es DoTimer?
-
-DoTimer muestra temporizadores visuales para todos los efectos de duración que el jugador aplica: dots (daño periódico), debuffs, buffs activos y cooldowns de habilidades. Especialmente poderoso para Warlocks que gestionan múltiples dots simultáneamente.
-
-## 🚀 Características
-
-| Función | Descripción |
-|---|---|
-| **Dot Tracker** | Temporizadores en tiempo real para Corruption, Curse of Agony, Immolate, Siphon Life |
-| **Debuff Monitor** | Control de todos los debuffs aplicados en el objetivo |
-| **Cooldown Display** | Barras de cooldown para habilidades del jugador y mascota |
-| **Multi-Target** | Seguimiento de dots en múltiples objetivos simultáneamente |
-| **Alert System** | Alerta sonora y visual cuando un dot está a punto de expirar |
-| **Séquito Style** | Tema visual oscuro integrado con pfUI |
-
-## ⚙️ Instalación
-
-1. Extrae en Interface\AddOns\DoTimer\.
-2. Activa el addon.
-3. Los temporizadores aparecen automáticamente al aplicar efectos.
-
-## 💻 Configuración
-
-| Comando | Descripción |
-|---|---|
-| /dotimer | Abrir configuración |
-| /dotimer lock | Bloquear posición de ventanas |
-| /dotimer reset | Resetear posicion y configuración |
-
-## 📖 Instrucciones Rápidas
-
-Ver [INSTRUCCIONES_RAPIDAS.txt](./INSTRUCCIONES_RAPIDAS.txt) para empezar en 2 minutos.
-
-## 📖 Manual Completo en Español
-
-Ver [README_SPANISH.md](./README_SPANISH.md) para documentación detallada.
-
-## 🕸️ Gobernanza
-
-- ⚖️ [Licencia MIT](./LICENSE)
-- 🤝 [Código de Conducta](./CODE_OF_CONDUCT.md)
-- 🛠️ [Guía de Contribución](./CONTRIBUTING.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Version](https://img.shields.io/badge/version-Sequito--Edition-red)](./CHANGELOG.md)
+[![World of Warcraft](https://img.shields.io/badge/WoW-1.12.1-orange)](https://turtle-wow.org)
 
 ---
-© 2024 **DarckRovert (Elnazzareno)** — El Séquito del Terror
+
+## 🔥 ¿Qué ofrece esta edición?
+
+DoTimer Sequito Edition es la herramienta definitiva para el seguimiento de DoTs (Damage over Time) y Debuffs, mejorada con:
+
+- **Perfiles de Warlock**: Configuración pre-cargada para Corruption, Immolate, Siphon Life y Curse of Agony.
+- **Integración WCS_Brain**: Sincronización de timers de DoTs con el motor de IA para la rotación óptima.
+- **Skins de El Séquito**: Barras con texturas oscuras y glow púrpura para máxima visibilidad.
+- **Micro-Optimización**: Reducción drástica del uso de CPU al procesar eventos de combate.
+
+## 🚀 Instalación & Uso
+
+1.  Extrae en `Interface\AddOns\DoTimer\`.
+2.  Al entrar al juego, usa `/dotimer` para abrir el menú de configuración.
+3.  Selecciona el perfil **"El Séquito"** desde la pestaña de perfiles.
+
+## 🏗️ Suite de Documentación (Wiki)
+
+Optimiza tu DPS:
+
+- 📐 **[Arquitectura](./wiki/Architecture.md)**: Cómo se procesan los timers de hechizos.
+- 🛠️ **[Guía de API](./wiki/API_Guide.md)**: Hooks para registrar nuevos timers externos.
+- ❓ **[FAQ](./wiki/FAQ.md)**: Solución de problemas de visualización masiva.
+- 📖 **[Manual de Usuario](./wiki/User_Manual.md)**: Guía de comandos y personalización.
+
+## 🔗 Ecosistema Integrado
+
+DoTimer es el ojo derecho de:
+- [WCS_Brain](file:///e:/Turtle%20Wow/Interface/AddOns/WCS_Brain)
+- [TerrorMeter](file:///e:/Turtle%20Wow/Interface/AddOns/TerrorMeter)
+
+---
+© 2026 **DarckRovert (Elnazzareno)** — El Séquito del Terror.
+*Sintaxis Lua 5.0 Estándar para Turtle WoW.*

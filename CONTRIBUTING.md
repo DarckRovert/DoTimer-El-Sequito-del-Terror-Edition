@@ -1,14 +1,13 @@
-# Contribuyendo a El Séquito del Terror
+# Contributing to DoTimer (El Séquito Edition)
 
-¡Gracias por tu interés en potenciar nuestro arsenal!
+Este es un fork especializado en el seguimiento de DoTs/Debuffs.
 
-## Cómo contribuir
-1. Haz un fork del repositorio.
-2. Crea una rama para tu mejora (git checkout -b feature/mejora).
-3. Envía tus cambios vía Pull Request.
+## Reglas Técnicas
+1. **Spell System**: Cualquier nuevo hechizo debe registrarse en el `SpellSystem` del addon.
+2. **Lua 5.0**: Evitar operadores modernos.
 
-## Estándares
-- Compatibilidad total con **Turtle WoW (Lua 5.0)**.
-- Documentación clara en los commits.
+## Desarrollo
+Forkea, mejora y abre un PR en GitHub.
 
-Lee nuestro [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) antes de empezar.
+---
+© 2026 **DarckRovert**.
