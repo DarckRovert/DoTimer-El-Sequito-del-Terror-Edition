@@ -1,6 +1,6 @@
 ## Interface: 11200
 ## Title: |cffffffffDoTimer |r|cff00ccff[Séquito del Terror]|r
-## Version: 9.4.0 [Omni-Tier]
+## Version: 1.5.0 [DoT-Tier]
 ## Notes: Displays duration timers for DoTs and Buffs. Optimized for precision combat.
 ## Author: El Séquito del Terror (DarckRovert)
 ## SavedVariablesPerCharacter: DoTimer_Settings

@@ -1,9 +1,9 @@
-# DoTimer — Precision Dot Tracking (v9.4.0 [Omni-Tier]) ⏳🔮
+# DoTimer — Aura Visualizer (v1.5.0 [DoT-Tier]) ⏳⚔️🔮
 
 > **The definitive duration timer for Turtle WoW.** Optimizado para el clan **El Séquito del Terror** con soporte completo para hechizos en español y lógica de refresco asíncrona personalizada por **DarckRovert**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Version](https://img.shields.io/badge/version-v9.4.0--Omni--Tier-blue)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-v1.5.0--DoT--Tier-purple)](./CHANGELOG.md)
 [![World of Warcraft](https://img.shields.io/badge/WoW-1.12.1--Turtle-orange)](https://turtle-wow.org)
 [![Support](https://img.shields.io/badge/Support-Ko--fi-blue)](https://ko-fi.com/darckrovert)
 
