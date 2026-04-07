@@ -1,15 +1,35 @@
 ---
-name: Reporte Oficial de Fallo Arquitectónico
-about: Envía un reporte estructurado y crítico al equipo de DarckRovert.
-title: "[CRASH] - "
-labels: bug, crítico
-assignees: DarckRovert
+name: "🐞 Bug Report — Precision Dot Tracking (DoTimer)"
+about: "Reporta un error técnico en DoTimer v9.4.0+"
+title: "[BUG] Descripción breve del problema"
+labels: ["bug", "spell-error"]
+assignees: darckrovert
+
 ---
 
-### Descripción Técnica del Falla
-(Sé directo, sin saludos ni rodeos. Adjunta el error técnico Lua o de Hardware NPU).
+## 📝 Descripción del Problema
+Describe de manera directa y técnica qué anomalía presenta el rastreador de hechizos.
 
-### Contexto del Motor (Obligatorio)
-- **Componente:** `DoTimer`
-- **Entorno:** Turtle WoW Client
-- **Bridge Activo:** [Sí/No]
+## 🚀 Pasos para Reproducir
+1.  Lanzar el hechizo: [ej: Corrupción].
+2.  Sobre el objetivo: [ej: Target / Focus].
+3.  Observar el fallo visual o lógico: [ej: El cronómetro no aparece o se muestra en un idioma erróneo].
+
+## 📊 Entorno Mágico
+- **Versión de DoTimer**: [9.4.0 Omni-Tier]
+- **Hechizo Afectado**: [ej: Corruption, Siphon Life]
+- **AddOns en conflicto**: [ej: WCS_Brain, pfUI]
+
+## 📁 Logs (Spell Logger)
+Pega el error LUA completo.
+
+```lua
+-- PEGA EL ERROR AQUÍ
+```
+
+## 📸 Evidencia Visual
+Adjunta capturas si el problema es de renderizado de barras CandyBar o anclajes de visualización.
+
+---
+© 2026 **DarckRovert** — El Séquito del Terror.
+*Precisión mágica para la conquista de Azeroth.*
