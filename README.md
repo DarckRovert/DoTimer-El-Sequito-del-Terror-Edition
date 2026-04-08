@@ -35,12 +35,12 @@ Es la herramienta de seguimiento de perjuicios (DoTs) y beneficios (Buffs) defin
 
 ## 🏗️ Suite de Documentación (Wiki)
 
-Domina tus rotaciones en nuestra base de conocimientos:
+Domina tus rotaciones en nuestra base de conocimientos oficial:
 
-- 📐 **[Arquitectura de Hechizos](./wiki/Architecture.md)**: Cómo gestionamos DoTimer_SpellLocalization.
-- 🛠️ **[Guía de API de Tiempo](./wiki/API_Guide.md)**: Hooks para alertas de TerrorMeter.
-- ❓ **[FAQ de Temporizadores](./wiki/FAQ.md)**: ¿Por qué no veo mi Corrupción?
-- 📖 **[Manual del Conjurador](./wiki/User_Manual.md)**: Guía de configuración de anclajes.
+- 🏰 **[Arquitectura de Hechizos](https://github.com/DarckRovert/DoTimer-El-Sequito-del-Terror-Edition/wiki/Arquitectura-(Extended))**: Cómo gestionamos DoTimer_SpellLocalization.
+- 🛠️ **[Guía de API de Tiempo](https://github.com/DarckRovert/DoTimer-El-Sequito-del-Terror-Edition/wiki/Guía-de-API)**: Hooks para alertas de TerrorMeter.
+- ❓ **[FAQ de Temporizadores](https://github.com/DarckRovert/DoTimer-El-Sequito-del-Terror-Edition/wiki/FAQ-(Timers))**: ¿Por qué no veo mi Corrupción?
+- 📖 **[Manual del Conjurador](https://github.com/DarckRovert/DoTimer-El-Sequito-del-Terror-Edition/wiki/Manual-de-Usuario)**: Guía de configuración de anclajes.
 
 ## 🚀 Despliegue Rápido (Timer-Flow)
 
